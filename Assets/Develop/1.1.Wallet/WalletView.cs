@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Develop._1._2.Timer.Develop.Example2;
 using UnityEngine;
 
 namespace Develop._1._1.Wallet
@@ -15,8 +16,11 @@ namespace Develop._1._1.Wallet
             _wallet = wallet;
             _views = new List<CurrencyView>(views);
 
-            foreach (ReactiveVariable<CurrencyType, int> currency in _wallet.Account)
-                currency.Changed += OnCurrencyChanged;
+            foreach (KeyValuePair<CurrencyType, IReadOnlyVariable<int>> currency in _wallet.Account)
+            {
+                currency.Value.Changed += (oldValue, newValue) =>
+                    OnCurrencyChanged(currency.Key, oldValue, newValue);
+            }
 
             foreach (CurrencyView view in _views)
             {
@@ -28,8 +32,11 @@ namespace Develop._1._1.Wallet
 
         private void OnDestroy()
         {
-            foreach (ReactiveVariable<CurrencyType, int> currency in _wallet.Account)
-                currency.Changed -= OnCurrencyChanged;
+            foreach (KeyValuePair<CurrencyType, IReadOnlyVariable<int>> currency in _wallet.Account)
+            {
+                currency.Value.Changed -= (oldValue, newValue) =>
+                    OnCurrencyChanged(currency.Key, oldValue, newValue);
+            }
 
             foreach (CurrencyView currency in _views)
             {
@@ -41,12 +48,12 @@ namespace Develop._1._1.Wallet
         private void OnAddCurrencyButtonClick(CurrencyType currencyType, int amount) => _wallet.AddCurrency(currencyType, amount);
         private void OnSpendCurrencyButtonClick(CurrencyType currencyType, int amount) => _wallet.TrySpendCurrency(currencyType, amount);
 
-        private void OnCurrencyChanged(CurrencyType currencyType, int amount)
+        private void OnCurrencyChanged(CurrencyType currency, int oldValue, int newValue)
         {
-            foreach (CurrencyView currency in _views)
+            foreach (CurrencyView view in _views)
             {
-                if(currency.CurrencyType == currencyType)
-                    currency.SetCurrencyText(amount.ToString());
+                if(view.CurrencyType == currency)
+                    view.SetCurrencyText(newValue.ToString());
             }
         }
 

@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Develop._1._2.Timer;
+using Develop._1._2.Timer.Develop.Example2;
 
 namespace Develop._1._1.Wallet
 {
     public class Wallet
     {
-        private readonly List<ReactiveVariable<CurrencyType, int>> _account;
+        private readonly Dictionary<CurrencyType, ReactiveVariable<int>> _account;
 
-        public Wallet(List<ReactiveVariable<CurrencyType, int>> currencies)
+        public Wallet(Dictionary<CurrencyType, ReactiveVariable<int>> currencies)
         {
-            _account = new List<ReactiveVariable<CurrencyType, int>>(currencies);
+            _account = new Dictionary<CurrencyType, ReactiveVariable<int>>(currencies);
         }
 
-        public IEnumerable<ReactiveVariable<CurrencyType, int>> Account => _account;
+        public IReadOnlyDictionary<CurrencyType, IReadOnlyVariable<int>> Account 
+            => _account.ToDictionary(pair => pair.Key, pair => (IReadOnlyVariable<int>)pair.Value);
 
         public void AddCurrency(CurrencyType currency, int amount)
         {
             if(amount <= 0)
                 throw new ArgumentOutOfRangeException(nameof(amount), "Currency amount cannot be negative");
 
-            ReactiveVariable<CurrencyType, int> found =
-                _account.First(accountCurrency => accountCurrency.Key == currency);
-
-            if(found.Key == currency)
+            if(_account.TryGetValue(currency, out ReactiveVariable<int> variable))
             {
-                found.Value += amount;
+                variable.Value += amount;
                 PrintWalletOperation(currency, amount);
                 return;
             }
@@ -39,15 +39,12 @@ namespace Develop._1._1.Wallet
             if(amount < 0)
                 throw new ArgumentOutOfRangeException(nameof(amount), "Currency amount cannot be negative");
 
-            ReactiveVariable<CurrencyType, int> found =
-                _account.First(accountCurrency => accountCurrency.Key == currency);
-
-            if(found.Key == currency)
+            if(_account.TryGetValue(currency, out ReactiveVariable<int> variable))
             {
-                if(found.Value - amount < 0)
+                if(variable.Value - amount < 0)
                     return false;
 
-                found.Value -= amount;
+                variable.Value -= amount;
 
                 PrintWalletOperation(currency, amount);
                 return true;

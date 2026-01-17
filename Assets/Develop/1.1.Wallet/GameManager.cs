@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Develop._1._2.Timer;
 using UnityEngine;
 
 namespace Develop._1._1.Wallet
@@ -20,10 +21,10 @@ namespace Develop._1._1.Wallet
 
         private void Awake()
         {
-            List<ReactiveVariable<CurrencyType, int>> currencies = new List<ReactiveVariable<CurrencyType, int>>();
+            Dictionary<CurrencyType, ReactiveVariable<int>> currencies = new Dictionary<CurrencyType, ReactiveVariable<int>>();
 
             foreach (CurrencySetting currencySetting in _currencySettings)
-                currencies.Add(new ReactiveVariable<CurrencyType, int>(currencySetting.Type, currencySetting.StartAmount));
+                currencies.Add(currencySetting.Type, new ReactiveVariable<int>(currencySetting.StartAmount));
 
             _wallet = new Wallet(currencies);
 

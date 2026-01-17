@@ -1,8 +1,9 @@
 ﻿using System;
+using Develop._1._2.Timer.Develop.Example2;
 
 namespace Develop._1._2.Timer
 {
-    public class ReactiveVariable<T> where T : IEquatable<T>
+    public class ReactiveVariable<T> : IReadOnlyVariable<T> where T : IEquatable<T>
     {
         public event Action<T, T> Changed;
 

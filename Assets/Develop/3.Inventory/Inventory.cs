@@ -16,7 +16,7 @@ namespace Develop._3.Inventory
             _maxSize = maxSize;
         }
 
-        public IReadOnlyList<Item> Items => _items;
+        public IReadOnlyList<IReadOnlyItem> Items => _items;
         private int CurrentSize => _items.Sum(item => item.Count);
 
         public bool TryAdd(Item added)
@@ -36,24 +36,27 @@ namespace Develop._3.Inventory
             return true;
         }
 
-        public Item GetItemsBy(string name, int count)
+        public bool TryGetItemsBy(string name, int count, out Item item)
         {
-            Item item = _items.FirstOrDefault(item => item.Name == name);
+            if(count <= 0)
+                throw new ArgumentOutOfRangeException(nameof(count), "Count must be greater than zero");
+
+            item = _items.FirstOrDefault(item => item.Name == name);
 
             if(item == null)
-                throw new ArgumentException("Item not found", name);
+                return false;
 
             if(item.Count < count)
-                throw new ArgumentException("Item count is less than requested", name);
+                return false;
 
             if(item.Count - count == 0)
             {
                 _items.Remove(item);
-                return item;
+                return true;
             }
 
             item.Sub(count);
-            return new Item(name, count);
+            return true;
         }
 
         private bool CanAdd(Item item) => CurrentSize + item.Count <= _maxSize;

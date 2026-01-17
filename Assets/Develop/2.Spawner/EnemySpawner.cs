@@ -7,34 +7,26 @@ namespace Develop._2.Spawner
     {
         public void Spawn(EnemyConfig enemyConfig, Vector2Int spawnPosition)
         {
-            Enemy enemy;
-
             switch (enemyConfig)
             {
                 case OrkConfig orkConfig:
 
-                    enemy = Instantiate(orkConfig.EnemyPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
-
-                    if(enemy is Ork ork)
-                        ork.Initialize(orkConfig.Health, orkConfig.Damage);
+                    Ork ork = Instantiate(orkConfig.OrkPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
+                    ork.Initialize(orkConfig.Health, orkConfig.Damage);
 
                     break;
 
                 case ElfConfig elfConfig:
 
-                    enemy = Instantiate(elfConfig.EnemyPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
-
-                    if(enemy is Elf elf)
-                        elf.Initialize(elfConfig.Health, elfConfig.Agility);
+                    Elf elf = Instantiate(elfConfig.ElfPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
+                    elf.Initialize(elfConfig.Health, elfConfig.Agility);
 
                     break;
 
                 case DragonConfig dragonConfig:
 
-                    enemy = Instantiate(dragonConfig.EnemyPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
-
-                    if(enemy is Dragon dragon)
-                        dragon.Initialize(dragonConfig.Health, dragonConfig.Mana);
+                    Dragon dragon = Instantiate(dragonConfig.DragonPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
+                    dragon.Initialize(dragonConfig.Health, dragonConfig.Mana);
 
                     break;
 

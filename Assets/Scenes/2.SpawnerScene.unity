@@ -154,43 +154,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySettings:
     _elfConfigs:
-    - <EnemyPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
+    - <Health>k__BackingField: 10
+      <ElfPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
         type: 3}
-      <Health>k__BackingField: 10
       <Agility>k__BackingField: 2
-    - <EnemyPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
+    - <Health>k__BackingField: 20
+      <ElfPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
         type: 3}
-      <Health>k__BackingField: 20
       <Agility>k__BackingField: 4
-    - <EnemyPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
+    - <Health>k__BackingField: 15
+      <ElfPrefab>k__BackingField: {fileID: 7999185421681602326, guid: ea9063a274292914ea0aee130d288f3a,
         type: 3}
-      <Health>k__BackingField: 15
       <Agility>k__BackingField: 3
     _orkConfigs:
-    - <EnemyPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
+    - <Health>k__BackingField: 50
+      <OrkPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
         type: 3}
-      <Health>k__BackingField: 50
       <Damage>k__BackingField: 10
-    - <EnemyPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
+    - <Health>k__BackingField: 30
+      <OrkPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
         type: 3}
-      <Health>k__BackingField: 30
       <Damage>k__BackingField: 20
-    - <EnemyPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
+    - <Health>k__BackingField: 40
+      <OrkPrefab>k__BackingField: {fileID: 2738862884513060030, guid: 377f25ffe174d0c4bab24ab40f73ddee,
         type: 3}
-      <Health>k__BackingField: 40
       <Damage>k__BackingField: 15
     _dragonConfigs:
-    - <EnemyPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
+    - <Health>k__BackingField: 90
+      <DragonPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
         type: 3}
-      <Health>k__BackingField: 90
       <Mana>k__BackingField: 50
-    - <EnemyPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
+    - <Health>k__BackingField: 120
+      <DragonPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
         type: 3}
-      <Health>k__BackingField: 120
       <Mana>k__BackingField: 45
-    - <EnemyPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
+    - <Health>k__BackingField: 110
+      <DragonPrefab>k__BackingField: {fileID: 5173626813899724116, guid: 21cfe6930a230804a8ddbf20964e85a8,
         type: 3}
-      <Health>k__BackingField: 110
       <Mana>k__BackingField: 60
   _enemySpawner: {fileID: 84272969}
 --- !u!4 &10261148

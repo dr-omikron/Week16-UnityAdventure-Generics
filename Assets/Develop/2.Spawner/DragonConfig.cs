@@ -7,6 +7,7 @@ namespace Develop._2.Spawner
 
     public class DragonConfig : EnemyConfig
     {
+        [field: SerializeField] public Dragon DragonPrefab { get; private set; }
         [field: SerializeField] public float Mana { get; private set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Develop._1._2.Timer.Develop.Example2;
 using UnityEngine;
 
 namespace Develop._1._2.Timer
@@ -20,8 +21,8 @@ namespace Develop._1._2.Timer
             _currentTime = new ReactiveVariable<float>();
         }
 
-        public ReactiveVariable<float> TimeLimit => _timeLimit;
-        public ReactiveVariable<float> CurrentTime => _currentTime;
+        public IReadOnlyVariable<float> TimeLimit => _timeLimit;
+        public IReadOnlyVariable<float> CurrentTime => _currentTime;
 
         public void SetTime(float time)
         {

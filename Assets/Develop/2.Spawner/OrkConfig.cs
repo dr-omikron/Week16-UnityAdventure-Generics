@@ -7,6 +7,7 @@ namespace Develop._2.Spawner
 
     public class OrkConfig : EnemyConfig
     {
+        [field: SerializeField] public Ork OrkPrefab { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
     }
 }

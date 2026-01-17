@@ -2,7 +2,7 @@
 
 namespace Develop._3.Inventory
 {
-    public class Item
+    public class Item : IReadOnlyItem
     {
         private readonly string _negativeCountExceptionMessage = "Count must be greater than zero";
 
